@@ -206,8 +206,6 @@ public class MainService {
 
         List<SearchHit> searchHits = Arrays.asList(response.getHits().getHits());
         List<Product> results = new ArrayList<>();
-        searchHits.forEach(
-                hit -> results.add(JSON.parseObject(hit.getSourceAsString(), Product.class)));
         double percent = calculatePercentage(response.getHits().getTotalHits(), totalCount);
         return String.format(productCountAndPercent, response.getHits().getTotalHits(), percent);
     }
@@ -225,8 +223,6 @@ public class MainService {
 
         List<SearchHit> searchHits = Arrays.asList(response.getHits().getHits());
         List<User> results = new ArrayList<User>();
-        searchHits.forEach(
-                hit -> results.add(JSON.parseObject(hit.getSourceAsString(), User.class)));
         double percent = calculatePercentage(response.getHits().getTotalHits(), totalCount);
         return String.format(userCountAndPercent, response.getHits().getTotalHits(), percent);
     }
